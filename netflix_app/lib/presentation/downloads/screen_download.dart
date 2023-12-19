@@ -1,14 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:netflix_app/core/colors/colors.dart';
+// import 'package:netflix_app/application/downloads/downloads_bloc.dart';
+import 'package:netflix_app/core/colors.dart';
 import 'package:netflix_app/core/constant.dart';
 
 import 'package:netflix_app/presentation/widjets/appBar_widjet.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScreenDownload extends StatelessWidget {
   ScreenDownload({super.key});
-  final _widjetList = [_Smartdownload(), Section2(), Section3()];
+  final _widjetList = [const _Smartdownload(), Section2(), const Section3()];
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +21,13 @@ class ScreenDownload extends StatelessWidget {
               tittle: 'Downloads',
             )),
         body: ListView.separated(
-            padding: EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
             itemBuilder: (
               ctx,
               index,
             ) =>
                 _widjetList[index],
-            separatorBuilder: (ctx, index) => SizedBox(height: 20),
+            separatorBuilder: (ctx, index) => const SizedBox(height: 20),
             itemCount: _widjetList.length));
   }
 }
@@ -76,7 +78,7 @@ class downloadImageWidjet extends StatelessWidget {
         width: size.width,
         height: size.height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
           // color: Colors.red,
           image: DecorationImage(
             fit: BoxFit.fill,
@@ -117,10 +119,9 @@ class Section2 extends StatelessWidget {
           style: TextStyle(color: Colors.grey, fontSize: 17),
         ),
         //
-        Container(
+        SizedBox(
           width: size.width,
           height: size.width * .95,
-          // color: Colors.white,
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -132,17 +133,19 @@ class Section2 extends StatelessWidget {
                 ),
               ),
               downloadImageWidjet(
-                  margin: EdgeInsets.only(left: 200, top: 56),
+                  margin: const EdgeInsets.only(left: 200, top: 56),
                   image: imageList[0],
+                  // "$imageAppendurl+${state.downloads?[1].posterPath}",
+
                   angle: 15,
                   size: Size(size.width * .3, size.width * .5)),
               downloadImageWidjet(
-                  margin: EdgeInsets.only(right: 200, top: 56),
+                  margin: const EdgeInsets.only(right: 200, top: 56),
                   image: imageList[1],
                   angle: -15,
                   size: Size(size.width * .3, size.width * .5)),
               downloadImageWidjet(
-                margin: EdgeInsets.only(
+                margin: const EdgeInsets.only(
                   top: 60,
                 ),
                 image: imageList[2],

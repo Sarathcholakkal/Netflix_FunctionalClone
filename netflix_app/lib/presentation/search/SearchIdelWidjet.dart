@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_app/core/colors/colors.dart';
+
 import 'package:netflix_app/core/constant.dart';
 import 'package:netflix_app/presentation/widjets/text_tittle_widjet.dart';
 
-final String imageUrl =
+const String imageUrl =
     "https://www.themoviedb.org/t/p/w250_and_h141_face/7RySzFeK3LPVMXcPtqfZnl6u4p1.jpg";
 
 class SearchIdelWidjet extends StatelessWidget {
@@ -40,9 +40,11 @@ class TopSearchItemTile extends StatelessWidget {
         Container(
           width: screenwidth * .33,
           height: 80,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
+              //
               image: NetworkImage(imageUrl),
+              //
               fit: BoxFit.fill,
             ),
           ),
@@ -50,7 +52,7 @@ class TopSearchItemTile extends StatelessWidget {
         const Expanded(
           child: Padding(
             padding: EdgeInsets.only(left: 10),
-            child: const Text(
+            child: Text(
               'MOVE NAMES',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
@@ -67,7 +69,7 @@ class TopSearchItemTile extends StatelessWidget {
               ),
               color: Colors.black,
             ),
-            child: Center(
+            child: const Center(
               child: Icon(
                 Icons.play_arrow,
                 color: Colors.white,
