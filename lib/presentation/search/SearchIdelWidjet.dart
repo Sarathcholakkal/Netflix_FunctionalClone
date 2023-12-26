@@ -5,8 +5,8 @@ import 'package:netflix_app/application/search/search_bloc.dart';
 import 'package:netflix_app/core/constant.dart';
 import 'package:netflix_app/presentation/widjets/text_tittle_widjet.dart';
 
-const String imageUrl =
-    "https://www.themoviedb.org/t/p/w250_and_h141_face/7RySzFeK3LPVMXcPtqfZnl6u4p1.jpg";
+// const String imageUrl =
+//     "https://www.themoviedb.org/t/p/w250_and_h141_face/7RySzFeK3LPVMXcPtqfZnl6u4p1.jpg";
 
 class SearchIdelWidjet extends StatelessWidget {
   const SearchIdelWidjet({super.key});
@@ -17,14 +17,33 @@ class SearchIdelWidjet extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         kheight,
-        TextTittleWidjet(textTittle: 'Top Searches'),
+        const TextTittleWidjet(textTittle: 'Top Searches'),
         kheight,
         Expanded(
-          child: ListView.separated(
-              shrinkWrap: true,
-              itemBuilder: (context, index) => const TopSearchItemTile(),
-              separatorBuilder: (ctx, inex) => kheight,
-              itemCount: 20),
+          child: BlocBuilder<SearchBloc, SearchState>(
+            builder: (context, state) {
+              if (state.isloading) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (state.iserror) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else {
+                return ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      final movie = state.idlelist[index];
+                      return TopSearchItemTile(
+                          imageurl: "$imageAppendurl${movie.posterPath ?? ''}",
+                          tittle: movie.title ?? 'notittle');
+                    },
+                    separatorBuilder: (ctx, inex) => kheight,
+                    itemCount: state.idlelist.length);
+              }
+            },
+          ),
         ),
       ],
     );
@@ -32,31 +51,35 @@ class SearchIdelWidjet extends StatelessWidget {
 }
 
 class TopSearchItemTile extends StatelessWidget {
-  const TopSearchItemTile({super.key});
+  const TopSearchItemTile(
+      {required this.imageurl, required this.tittle, super.key});
 
+  final String imageurl;
+  final String tittle;
   @override
   Widget build(BuildContext context) {
     final screenwidth = MediaQuery.of(context).size.width;
+
     return Row(
       children: [
         Container(
           width: screenwidth * .33,
           height: 80,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
               //
-              image: NetworkImage(imageUrl),
+              image: NetworkImage(imageurl),
               //
               fit: BoxFit.fill,
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           child: Padding(
-            padding: EdgeInsets.only(left: 10),
+            padding: const EdgeInsets.only(left: 10),
             child: Text(
-              'MOVE NAMES',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              tittle,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
         ),

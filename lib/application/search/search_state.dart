@@ -6,7 +6,7 @@ class SearchState with _$SearchState {
       {required bool isloading,
       required bool iserror,
       required List<Downloads> idlelist,
-      required List<SearchResponseData> searchlist}) = _SearchState;
+      required List<SearchResult>? searchlist}) = _SearchState;
   //
   //
   factory SearchState.initial() {

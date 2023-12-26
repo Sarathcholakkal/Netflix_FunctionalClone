@@ -16,9 +16,11 @@ class SearchservicesImp implements SearchServices {
     try {
       final Response response = await Dio(BaseOptions())
           .get(Apiendpoints.ksearch, queryParameters: {'query': movieQuery});
+      // log(response.data.toString());
       if (response.statusCode == 200 || response.statusCode == 201) {
         final serchserviceList = SearchResponseData.fromJson(response.data);
-        log(serchserviceList.toString());
+        // log(serchserviceList.toString());
+
         return Right(serchserviceList);
       } else {
         return const Left(Mainfauilure.clientfauilure());

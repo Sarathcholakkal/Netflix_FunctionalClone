@@ -60,12 +60,12 @@ class _Smartdownload extends StatelessWidget {
 }
 
 class Section2 extends StatelessWidget {
-  Section2({super.key});
-  final List imageList = [
-    'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/y4YMYsGSMwu8e985g0Zbumvqxld.jpg',
-    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/exFEYr9mJ4A0VtQZjrKaXdk82DB.jpg",
-    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg"
-  ];
+  const Section2({super.key});
+  // final List imageList = [
+  //   'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/y4YMYsGSMwu8e985g0Zbumvqxld.jpg',
+  //   "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/exFEYr9mJ4A0VtQZjrKaXdk82DB.jpg",
+  //   "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg"
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -92,8 +92,8 @@ class Section2 extends StatelessWidget {
         //
         BlocBuilder<DownloadsBloc, DownloadsState>(
           builder: (context, state) {
-            print("downloads list lenghth is${state.downloads?.length}");
-            return (state.downloads?.length) == 0
+            // print("downloads list lenghth is${state.downloads?.length}");
+            return (state.downloads.length) == 0
                 ? SizedBox(
                     width: size.width,
                     height: size.width * .95,
