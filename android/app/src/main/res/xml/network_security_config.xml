@@ -8,4 +8,5 @@
             <pin digest="SHA-256">fwza0LRMXouZHRC8Ei+4PyuldPDcf3UKgO/04cDM1oE=</pin>
         </pin-set>
     </domain-config>
-</network-security-config>
+</network-security-config>   
+

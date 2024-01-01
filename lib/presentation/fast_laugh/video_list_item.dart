@@ -1,10 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:netflix_app/application/fastandlaugh/fastandlaugh_bloc.dart';
 import 'package:netflix_app/core/colors.dart';
 import 'package:netflix_app/core/constant.dart';
 import 'package:netflix_app/presentation/fast_laugh/screen_fastlaugh.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:core';
 
@@ -14,10 +17,16 @@ class VideoListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Value notiferes list decleardtions.
+
+    ValueNotifier<Set<int>> addvideoListNotifer = ValueNotifier({});
+
     //avatar section declearaions
     final posterpath = VideoListItemInherited.of(context)?.movieData;
     final temp = posterpath!.posterPath;
     String temvar = "$imageAppendurl$temp";
+    final movietemp = posterpath!.title ?? 'error';
+    // log(movietemp);
     // print(temvar);
     //video section declearations
     final tempVideoUrl = videoDummiUrl[index % videoDummiUrl.length];
@@ -54,12 +63,12 @@ class VideoListItem extends StatelessWidget {
                               image: NetworkImage(temvar), fit: BoxFit.cover),
                         ),
                       ),
-                      const Positioned(
+                      Positioned(
                         bottom: 0,
                         right: 2,
                         child: Text(
-                          'NAME',
-                          style: TextStyle(
+                          movietemp,
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 12),
                         ),
                       )
@@ -67,10 +76,41 @@ class VideoListItem extends StatelessWidget {
                   ),
                   const VideoActionWidjets(
                       tittle: 'LOL', icon: Icons.emoji_emotions),
-                  const VideoActionWidjets(tittle: 'MyList', icon: Icons.add),
-                  const VideoActionWidjets(
-                    tittle: 'Share',
-                    icon: Icons.arrow_back_ios_new_sharp,
+                  //mylist
+                  ValueListenableBuilder(
+                      valueListenable: addvideoListNotifer,
+                      builder: (ctx, Set<int> newvideolist, _) {
+                        final mylistindex = index;
+                        if (newvideolist.contains(mylistindex)) {
+                          return GestureDetector(
+                            onTap: () {
+                              addvideoListNotifer.value.remove(mylistindex);
+                              addvideoListNotifer.notifyListeners();
+                            },
+                            child: const VideoActionWidjets(
+                                tittle: 'MyList', icon: Icons.remove),
+                          );
+                        } else {
+                          return GestureDetector(
+                              onTap: () {
+                                addvideoListNotifer.value.add(mylistindex);
+                                addvideoListNotifer.notifyListeners();
+                              },
+                              child: const VideoActionWidjets(
+                                  tittle: 'MyList', icon: Icons.add));
+                        }
+
+                        //
+                      }),
+                  //
+                  GestureDetector(
+                    onTap: () {
+                      Share.share(movietemp);
+                    },
+                    child: const VideoActionWidjets(
+                      tittle: 'Share',
+                      icon: Icons.arrow_back_ios_new_sharp,
+                    ),
                   ),
                   const VideoActionWidjets(
                       tittle: 'Play', icon: CupertinoIcons.play_fill),

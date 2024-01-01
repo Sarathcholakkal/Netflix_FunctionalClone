@@ -6,7 +6,21 @@ import 'package:netflix_app/presentation/news&hot/widjets/icontile.dart';
 import 'package:netflix_app/presentation/news&hot/widjets/videoWidjet.dart';
 
 class ScreenComingSoon extends StatelessWidget {
-  const ScreenComingSoon({super.key});
+  final String month;
+  final String day;
+  final int id;
+  final String movieName;
+  final String posterPath;
+  final String movieDiscription;
+
+  const ScreenComingSoon(
+      {super.key,
+      required this.month,
+      required this.day,
+      required this.id,
+      required this.movieName,
+      required this.posterPath,
+      required this.movieDiscription});
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_app/application/HotandNew/hotand_new_bloc.dart';
 import 'package:netflix_app/application/download/download_bloc.dart';
 import 'package:netflix_app/application/fastandlaugh/fastandlaugh_bloc.dart';
 import 'package:netflix_app/application/search/search_bloc.dart';
@@ -23,9 +24,10 @@ Future<void> main() async {
       BlocProvider(
         create: (context) => getitobj<SearchBloc>(),
       ),
-      BlocProvider(create: (context) => getitobj<FastandlaughBloc>())
+      BlocProvider(create: (context) => getitobj<FastandlaughBloc>()),
+      BlocProvider(create: (context) => getitobj<HotandNewBloc>())
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 

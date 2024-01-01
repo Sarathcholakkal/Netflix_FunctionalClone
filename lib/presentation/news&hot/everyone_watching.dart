@@ -4,7 +4,15 @@ import 'package:netflix_app/presentation/news&hot/widjets/icontile.dart';
 import 'package:netflix_app/presentation/news&hot/widjets/videoWidjet.dart';
 
 class EveryOneIsWatching extends StatelessWidget {
-  const EveryOneIsWatching({super.key});
+  final String movieName;
+  final String movieDiscription;
+  final String posterPath;
+
+  const EveryOneIsWatching(
+      {super.key,
+      required this.movieName,
+      required this.movieDiscription,
+      required this.posterPath});
 
   @override
   Widget build(BuildContext context) {
