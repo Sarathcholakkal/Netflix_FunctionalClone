@@ -291,9 +291,9 @@ abstract class Getdataeveryoneiswatching implements HotandNewEvent {
 
 /// @nodoc
 mixin _$HotandNewState {
-  List<HotNewsingleResponse> get evryoneisWatching =>
+  List<HotNewsingleResponse>? get evryoneisWatching =>
       throw _privateConstructorUsedError;
-  List<HotNewsingleResponse> get commingsoon =>
+  List<HotNewsingleResponse>? get commingsoon =>
       throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
   bool get isloading => throw _privateConstructorUsedError;
@@ -310,8 +310,8 @@ abstract class $HotandNewStateCopyWith<$Res> {
       _$HotandNewStateCopyWithImpl<$Res, HotandNewState>;
   @useResult
   $Res call(
-      {List<HotNewsingleResponse> evryoneisWatching,
-      List<HotNewsingleResponse> commingsoon,
+      {List<HotNewsingleResponse>? evryoneisWatching,
+      List<HotNewsingleResponse>? commingsoon,
       bool isError,
       bool isloading});
 }
@@ -329,20 +329,20 @@ class _$HotandNewStateCopyWithImpl<$Res, $Val extends HotandNewState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? evryoneisWatching = null,
-    Object? commingsoon = null,
+    Object? evryoneisWatching = freezed,
+    Object? commingsoon = freezed,
     Object? isError = null,
     Object? isloading = null,
   }) {
     return _then(_value.copyWith(
-      evryoneisWatching: null == evryoneisWatching
+      evryoneisWatching: freezed == evryoneisWatching
           ? _value.evryoneisWatching
           : evryoneisWatching // ignore: cast_nullable_to_non_nullable
-              as List<HotNewsingleResponse>,
-      commingsoon: null == commingsoon
+              as List<HotNewsingleResponse>?,
+      commingsoon: freezed == commingsoon
           ? _value.commingsoon
           : commingsoon // ignore: cast_nullable_to_non_nullable
-              as List<HotNewsingleResponse>,
+              as List<HotNewsingleResponse>?,
       isError: null == isError
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
@@ -364,8 +364,8 @@ abstract class _$$_InitialCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<HotNewsingleResponse> evryoneisWatching,
-      List<HotNewsingleResponse> commingsoon,
+      {List<HotNewsingleResponse>? evryoneisWatching,
+      List<HotNewsingleResponse>? commingsoon,
       bool isError,
       bool isloading});
 }
@@ -380,20 +380,20 @@ class __$$_InitialCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? evryoneisWatching = null,
-    Object? commingsoon = null,
+    Object? evryoneisWatching = freezed,
+    Object? commingsoon = freezed,
     Object? isError = null,
     Object? isloading = null,
   }) {
     return _then(_$_Initial(
-      evryoneisWatching: null == evryoneisWatching
+      evryoneisWatching: freezed == evryoneisWatching
           ? _value._evryoneisWatching
           : evryoneisWatching // ignore: cast_nullable_to_non_nullable
-              as List<HotNewsingleResponse>,
-      commingsoon: null == commingsoon
+              as List<HotNewsingleResponse>?,
+      commingsoon: freezed == commingsoon
           ? _value._commingsoon
           : commingsoon // ignore: cast_nullable_to_non_nullable
-              as List<HotNewsingleResponse>,
+              as List<HotNewsingleResponse>?,
       isError: null == isError
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
@@ -410,25 +410,29 @@ class __$$_InitialCopyWithImpl<$Res>
 
 class _$_Initial implements _Initial {
   const _$_Initial(
-      {required final List<HotNewsingleResponse> evryoneisWatching,
-      required final List<HotNewsingleResponse> commingsoon,
+      {final List<HotNewsingleResponse>? evryoneisWatching,
+      required final List<HotNewsingleResponse>? commingsoon,
       required this.isError,
       required this.isloading})
       : _evryoneisWatching = evryoneisWatching,
         _commingsoon = commingsoon;
 
-  final List<HotNewsingleResponse> _evryoneisWatching;
+  final List<HotNewsingleResponse>? _evryoneisWatching;
   @override
-  List<HotNewsingleResponse> get evryoneisWatching {
+  List<HotNewsingleResponse>? get evryoneisWatching {
+    final value = _evryoneisWatching;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_evryoneisWatching);
+    return EqualUnmodifiableListView(value);
   }
 
-  final List<HotNewsingleResponse> _commingsoon;
+  final List<HotNewsingleResponse>? _commingsoon;
   @override
-  List<HotNewsingleResponse> get commingsoon {
+  List<HotNewsingleResponse>? get commingsoon {
+    final value = _commingsoon;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_commingsoon);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -472,15 +476,15 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements HotandNewState {
   const factory _Initial(
-      {required final List<HotNewsingleResponse> evryoneisWatching,
-      required final List<HotNewsingleResponse> commingsoon,
+      {final List<HotNewsingleResponse>? evryoneisWatching,
+      required final List<HotNewsingleResponse>? commingsoon,
       required final bool isError,
       required final bool isloading}) = _$_Initial;
 
   @override
-  List<HotNewsingleResponse> get evryoneisWatching;
+  List<HotNewsingleResponse>? get evryoneisWatching;
   @override
-  List<HotNewsingleResponse> get commingsoon;
+  List<HotNewsingleResponse>? get commingsoon;
   @override
   bool get isError;
   @override

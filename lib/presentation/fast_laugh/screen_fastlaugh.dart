@@ -30,9 +30,12 @@ class ScreenFastLaugh extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance!.addPostFrameCallback((_) { BlocProvider.of(context) .add(FastandlaughEvent.initialze()); });
-    BlocProvider.of<FastandlaughBloc>(context)
-        .add(const FastandlaughEvent.initialze());
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      BlocProvider.of<FastandlaughBloc>(context)
+          .add(const FastandlaughEvent.initialze());
+    });
+    // BlocProvider.of<FastandlaughBloc>(context)
+    //     .add(const FastandlaughEvent.initialze());
     return Scaffold(
       body: SafeArea(
         child: BlocBuilder<FastandlaughBloc, FastandlaughState>(

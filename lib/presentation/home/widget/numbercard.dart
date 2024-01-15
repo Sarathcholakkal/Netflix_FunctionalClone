@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:netflix_app/core/constant.dart';
 
 class NumberCard extends StatelessWidget {
-  const NumberCard({super.key, required this.index});
+  final String numbercardposterpath;
+  const NumberCard({
+    super.key,
+    required this.index,
+    required this.numbercardposterpath,
+  });
   final int index;
 
   @override
@@ -21,14 +26,16 @@ class NumberCard extends StatelessWidget {
                 // height: 200,
                 width: 150,
                 // color: Colors.amber,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   // color: Colors.amber,
                   borderRadius: kborderRadius,
                   color: Colors.blueAccent,
                   image: DecorationImage(
                     fit: BoxFit.fill,
                     image: NetworkImage(
-                      "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zS1xqiicFoZPu5fVyT3AEQuqCPx.jpg",
+                      // "https://image.tmdb.org/t/p/w500/uDCeELWWpsNq7ErM61Yuq70WAE9.jpg",
+
+                      numbercardposterpath,
                     ),
                   ),
                 ),

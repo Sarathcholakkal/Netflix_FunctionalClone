@@ -35,7 +35,6 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
           //right
 
           (success) {
-        // log(success.toString());
         return DownloadsState(
             isloading: false,
             downloads: success,

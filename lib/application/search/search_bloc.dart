@@ -60,7 +60,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       // apicall
       final templistsearchmovie =
           await _searchServices.searchMovies(movieQuery: event.movieQuery);
-      log(templistsearchmovie.toString());
+      // log(templistsearchmovie.toString());
       // updating  api state
       emit(templistsearchmovie.fold(
         //
@@ -70,7 +70,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         },
         //
         (sucess) {
-          log(sucess.results.toString());
+          // log(sucess.results.toString());
           return SearchState(
               isloading: false,
               iserror: false,

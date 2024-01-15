@@ -4,12 +4,17 @@ import 'package:netflix_app/presentation/widjets/text_tittle_widjet.dart';
 
 class NumbercardListView extends StatelessWidget {
   final String mainlistTittle;
-  const NumbercardListView({super.key, required this.mainlistTittle});
+  final List<String> posterlist;
+  const NumbercardListView({
+    super.key,
+    required this.mainlistTittle,
+    required this.posterlist,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,11 +28,16 @@ class NumbercardListView extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: List.generate(
-                    10,
-                    (index) =>
-                        //  const Containerwidjet()
-                        // MainCardinHome(),
-                        NumberCard(index: index)),
+                  // 10,
+                  posterlist.length,
+                  (index) =>
+                      //  const Containerwidjet()
+                      // MainCardinHome(),
+                      NumberCard(
+                    index: index,
+                    numbercardposterpath: posterlist[index],
+                  ),
+                ),
               ),
             )
           ],

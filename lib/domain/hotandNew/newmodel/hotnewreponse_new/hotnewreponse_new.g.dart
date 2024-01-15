@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'hot_new_response.dart';
+part of 'hotnewreponse_new.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -9,7 +9,7 @@ part of 'hot_new_response.dart';
 HotNewResponse _$HotNewResponseFromJson(Map<String, dynamic> json) =>
     HotNewResponse(
       page: json['page'] as int?,
-      hotnewResponse: (json['hotnewResponse'] as List<dynamic>?)
+      results: (json['results'] as List<dynamic>?)
               ?.map((e) =>
                   HotNewsingleResponse.fromJson(e as Map<String, dynamic>))
               .toList() ??
@@ -19,7 +19,7 @@ HotNewResponse _$HotNewResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$HotNewResponseToJson(HotNewResponse instance) =>
     <String, dynamic>{
       'page': instance.page,
-      'hotnewResponse': instance.hotnewResponse,
+      'results': instance.results,
     };
 
 HotNewsingleResponse _$HotNewsingleResponseFromJson(
@@ -27,21 +27,20 @@ HotNewsingleResponse _$HotNewsingleResponseFromJson(
     HotNewsingleResponse(
       backdropPath: json['backdrop_path'] as String?,
       id: json['id'] as int?,
-      originalLanguage: json['original_language'] as String?,
       originalTitle: json['original_title'] as String?,
       overview: json['overview'] as String?,
       posterPath: json['poster_path'] as String?,
       releaseDate: json['release_date'] as String?,
       title: json['title'] as String?,
-    );
+    )..original_name = json['original_name'] as String?;
 
 Map<String, dynamic> _$HotNewsingleResponseToJson(
         HotNewsingleResponse instance) =>
     <String, dynamic>{
       'backdrop_path': instance.backdropPath,
       'id': instance.id,
-      'original_language': instance.originalLanguage,
       'original_title': instance.originalTitle,
+      'original_name': instance.original_name,
       'overview': instance.overview,
       'poster_path': instance.posterPath,
       'release_date': instance.releaseDate,

@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_app/domain/core/fauilure/mainfauilure.dart';
 import 'package:netflix_app/domain/hotandNew/hot_new_services.dart';
-import 'package:netflix_app/domain/hotandNew/model/hot_new_response.dart';
+import 'package:netflix_app/domain/hotandNew/newmodel/hotnewreponse_new/hotnewreponse_new.dart';
 
 part 'hotand_new_event.dart';
 part 'hotand_new_state.dart';
@@ -26,7 +26,8 @@ class HotandNewBloc extends Bloc<HotandNewEvent, HotandNewState> {
             isloading: true));
         // comming soon data recieved stage.
         final result = await _hotNewService.getHotNewMovieResponse();
-        log(result.toString());
+        // log(result.toString());
+
         emit(result.fold((failure) {
           return const HotandNewState(
               evryoneisWatching: [],
@@ -34,10 +35,10 @@ class HotandNewBloc extends Bloc<HotandNewEvent, HotandNewState> {
               isError: true,
               isloading: false);
         }, (HotNewResponse res) {
-          // log(res.hotnewResponse.toString());
+          // log(res.results![0].posterPath.toString());
           return HotandNewState(
               evryoneisWatching: state.evryoneisWatching,
-              commingsoon: res.hotnewResponse!,
+              commingsoon: res.results,
               isError: false,
               isloading: false);
         }));
@@ -64,9 +65,8 @@ class HotandNewBloc extends Bloc<HotandNewEvent, HotandNewState> {
       },
           //
           (HotNewResponse success) {
-        // log(success.toString());
         return HotandNewState(
-            evryoneisWatching: success.hotnewResponse!,
+            evryoneisWatching: success.results,
             commingsoon: state.commingsoon,
             isError: false,
             isloading: false);

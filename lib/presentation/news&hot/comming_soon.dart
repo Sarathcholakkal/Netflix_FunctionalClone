@@ -31,21 +31,22 @@ class ScreenComingSoon extends StatelessWidget {
         Row(
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 500,
               width: 50,
               child: Column(
                 children: [
                   Text(
-                    'FEB',
-                    style: TextStyle(
+                    month,
+                    style: const TextStyle(
                         color: Colors.grey,
                         fontWeight: FontWeight.bold,
                         fontSize: 16),
                   ),
                   Text(
-                    '11',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+                    day,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 25),
                   )
                 ],
               ),
@@ -56,20 +57,23 @@ class ScreenComingSoon extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  VideoWidjet(),
+                  VideoWidjet(videoUrl: posterPath),
                   const SizedBox(
                     height: 20,
                   ),
                   Row(
                     children: [
-                      Text(
-                        'TALLGIRl2',
-                        style: TextStyle(
-                            fontSize: 40,
-                            fontFamily: GoogleFonts.julee().fontFamily,
-                            letterSpacing: .1),
+                      Expanded(
+                        child: Text(
+                          movieName,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontFamily: GoogleFonts.julee().fontFamily,
+                              letterSpacing: .1),
+                        ),
                       ),
-                      const Spacer(),
                       const Row(
                         children: [
                           IconTile(
@@ -80,24 +84,28 @@ class ScreenComingSoon extends StatelessWidget {
                       )
                     ],
                   ),
-                  const Text(
-                    'Comming on Friday',
-                    style: TextStyle(
+                  Text(
+                    'Comming on $month $day',
+                    style: const TextStyle(
                         color: kgreycolor,
                         fontWeight: FontWeight.bold,
                         fontSize: 16),
                   ),
                   kheight20,
-                  const Text(
-                    'TallGirl2',
-                    style: TextStyle(
+                  Text(
+                    movieName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
                         letterSpacing: .5),
                   ),
-                  const Text(
-                    'Landing the lead in the school  musical is a dream come true for Jodi,  until the pressure sends her confidence - and her relationship -into tailspin',
-                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                  Text(
+                    movieDiscription,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(color: Colors.grey, fontSize: 16),
                   )
                 ],
               ),

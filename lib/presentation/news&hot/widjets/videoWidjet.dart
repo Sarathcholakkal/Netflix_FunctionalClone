@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:netflix_app/core/constant.dart';
 
 class VideoWidjet extends StatelessWidget {
-  const VideoWidjet({
-    super.key,
-  });
+  final String videoUrl;
+  const VideoWidjet({super.key, required this.videoUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +13,25 @@ class VideoWidjet extends StatelessWidget {
           width: double.infinity,
           height: 200,
           child: Image.network(
-            imagetile,
+            videoUrl,
             fit: BoxFit.cover,
+            errorBuilder: (BuildContext _, Object a, StackTrace? trace) {
+              return const Center(
+                child: Icon(Icons.wifi),
+              );
+            },
+            loadingBuilder:
+                (BuildContext _, Widget child, ImageChunkEvent? progress) {
+              if (progress == null) {
+                return child;
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                  ),
+                );
+              }
+            },
           ),
         ),
         Positioned(

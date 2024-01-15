@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_app/application/HotandNew/hotand_new_bloc.dart';
 import 'package:netflix_app/application/download/download_bloc.dart';
 import 'package:netflix_app/application/fastandlaugh/fastandlaugh_bloc.dart';
+import 'package:netflix_app/application/home_screen/homescreen_bloc.dart';
 import 'package:netflix_app/application/search/search_bloc.dart';
 
 // import 'package:netflix_app/application/downloads/downloads_bloc.dart';
@@ -25,7 +26,8 @@ Future<void> main() async {
         create: (context) => getitobj<SearchBloc>(),
       ),
       BlocProvider(create: (context) => getitobj<FastandlaughBloc>()),
-      BlocProvider(create: (context) => getitobj<HotandNewBloc>())
+      BlocProvider(create: (context) => getitobj<HotandNewBloc>()),
+      BlocProvider(create: (context) => getitobj<HomescreenBloc>())
     ],
     child: const MyApp(),
   ));

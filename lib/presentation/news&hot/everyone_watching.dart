@@ -8,7 +8,7 @@ class EveryOneIsWatching extends StatelessWidget {
   final String movieDiscription;
   final String posterPath;
 
-  const EveryOneIsWatching(
+  EveryOneIsWatching(
       {super.key,
       required this.movieName,
       required this.movieDiscription,
@@ -16,26 +16,28 @@ class EveryOneIsWatching extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LimitedBox(
+    return LimitedBox(
       maxWidth: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           kheight20,
           Text(
-            'TallGirl2',
-            style: TextStyle(
+            movieName,
+            style: const TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 22, letterSpacing: .5),
           ),
           kheight,
           Text(
-            'Landing the lead in the school  musical is a dream come true for Jodi,  until the pressure sends her confidence - and her relationship -into tailspin',
-            style: TextStyle(color: Colors.grey, fontSize: 16),
+            movieDiscription,
+            style: const TextStyle(color: Colors.grey, fontSize: 16),
+            maxLines: 5,
+            overflow: TextOverflow.ellipsis,
           ),
           kheight50,
-          VideoWidjet(),
+          VideoWidjet(videoUrl: posterPath),
           kheight,
-          Row(
+          const Row(
             children: [
               Spacer(),
               IconTile(

@@ -13,8 +13,10 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:netflix_app/application/download/download_bloc.dart' as _i5;
 import 'package:netflix_app/application/fastandlaugh/fastandlaugh_bloc.dart'
     as _i6;
+import 'package:netflix_app/application/home_screen/homescreen_bloc.dart'
+    as _i12;
 import 'package:netflix_app/application/HotandNew/hotand_new_bloc.dart' as _i9;
-import 'package:netflix_app/application/search/search_bloc.dart' as _i12;
+import 'package:netflix_app/application/search/search_bloc.dart' as _i13;
 import 'package:netflix_app/domain/downloads/download_services.dart' as _i3;
 import 'package:netflix_app/domain/hotandNew/hot_new_services.dart' as _i7;
 import 'package:netflix_app/domain/search/search_services.dart' as _i10;
@@ -45,7 +47,9 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i9.HotandNewBloc>(
         () => _i9.HotandNewBloc(gh<_i7.HotNewService>()));
     gh.lazySingleton<_i10.SearchServices>(() => _i11.SearchservicesImp());
-    gh.factory<_i12.SearchBloc>(() => _i12.SearchBloc(
+    gh.factory<_i12.HomescreenBloc>(
+        () => _i12.HomescreenBloc(gh<_i7.HotNewService>()));
+    gh.factory<_i13.SearchBloc>(() => _i13.SearchBloc(
           gh<_i3.DownloadServices>(),
           gh<_i10.SearchServices>(),
         ));
