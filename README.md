@@ -1,4 +1,4 @@
-# Netflix_oldversion_functionalClone
+# Netflix_FunctionalClone
 
 A new Flutter project.
 
